@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import * as yup from 'yup';
 import { Route, Link, Switch } from 'react-router-dom';
 
 import OrderForm from './components/form'
-
 
 
 const App = () => {
@@ -25,15 +23,15 @@ const App = () => {
 
         <div>
           <Link to={`/pizza`} id="order-pizza">
-            <button>Order</button>
+            <button className="createPizzaBtn">Order Pizza</button>
           </Link>
         </div>
 
-        <Switch>
-          <Route path={`/pizza`}>
-            <OrderForm />
-          </Route>
-        </Switch>
+        {/* <Switch> */}
+        <Route path={`/pizza`}>
+          <OrderForm />
+        </Route>
+        {/* </Switch> */}
       </div>
     </>
   );
