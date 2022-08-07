@@ -1,8 +1,18 @@
+import { toHaveFormValues } from "@testing-library/jest-dom/dist/matchers";
 import React, { useState, useEffect } from "react";
 
 import OrderButton from './order'
 
 export default function OrderForm(props) {
+   const { values, change, errors } = props
+
+   const onChange = event => {
+      const { name, value, checked, type } = event.target
+
+      const valueToUse = type === 'checkbox' ? checked : value;
+
+      change(name, valueToUse)
+   }
 
    return (
       <form id="pizza-form">
@@ -12,6 +22,9 @@ export default function OrderForm(props) {
             <input
                type="text"
                id="name-input"
+               name="name"
+               value={values.name}
+               onChange={onChange}
             />
          </div>
          <div className="pickSize">
@@ -20,8 +33,9 @@ export default function OrderForm(props) {
             <select
                name="pickSize"
                id="size-dropdown"
-            // value={}
-            // onChange={}
+               name="size"
+               value={values.size}
+               onChange={onChange}
             >
                <option value=''>Pick a Size</option>
                <option value='small'>Small</option>
@@ -35,8 +49,8 @@ export default function OrderForm(props) {
                <input
                   type="checkbox"
                   name="pepperoni"
-               // checked={}
-               // onChange={}
+                  checked={values.pepperoni}
+                  onChange={onChange}
                />
                Pepperoni
             </label>
@@ -44,8 +58,8 @@ export default function OrderForm(props) {
                <input
                   type="checkbox"
                   name="ham"
-               // checked={}
-               // onChange={}
+                  checked={values.ham}
+                  onChange={onChange}
                />
                Ham
             </label>
@@ -53,8 +67,8 @@ export default function OrderForm(props) {
                <input
                   type="checkbox"
                   name="mushrooms"
-               // checked={}
-               // onChange={}
+                  checked={values.mushrooms}
+                  onChange={onChange}
                />
                Mushrooms
             </label>
@@ -62,8 +76,8 @@ export default function OrderForm(props) {
                <input
                   type="checkbox"
                   name="pineapple"
-               // checked={}
-               // onChange={}
+                  checked={values.pineapple}
+                  onChange={onChange}
                />
                Pineapple
             </label>
@@ -71,8 +85,8 @@ export default function OrderForm(props) {
                <input
                   type="checkbox"
                   name="spinach"
-               // checked={}
-               // onChange={}
+                  checked={values.spinach}
+                  onChange={onChange}
                />
                Spinach
             </label>
@@ -80,8 +94,8 @@ export default function OrderForm(props) {
                <input
                   type="checkbox"
                   name="olives"
-               // checked={}
-               // onChange={}
+                  checked={values.olives}
+                  onChange={onChange}
                />
                Olives
             </label>
@@ -89,8 +103,8 @@ export default function OrderForm(props) {
                <input
                   type="checkbox"
                   name="garlic"
-               // checked={}
-               // onChange={}
+                  checked={values.garlic}
+                  onChange={onChange}
                />
                Garlic
             </label>
@@ -98,8 +112,8 @@ export default function OrderForm(props) {
                <input
                   type="checkbox"
                   name="onion"
-               // checked={}
-               // onChange={}
+                  checked={values.onion}
+                  onChange={onChange}
                />
                Onion
             </label>
@@ -107,8 +121,8 @@ export default function OrderForm(props) {
                <input
                   type="checkbox"
                   name="bellPepper"
-               // checked={}
-               // onChange={}
+                  checked={values.bellPepper}
+                  onChange={onChange}
                />
                Bell Pepper
             </label>
@@ -116,8 +130,8 @@ export default function OrderForm(props) {
                <input
                   type="checkbox"
                   name="tomato"
-               // checked={}
-               // onChange={}
+                  checked={values.tomato}
+                  onChange={onChange}
                />
                Tomato
             </label>
@@ -128,6 +142,7 @@ export default function OrderForm(props) {
             <input
                type='text'
                id='special-text'
+               name='special'
             />
          </div>
          <div id="order-button">
