@@ -7,6 +7,26 @@ const formSchema = yup.object().shape({
 
    size: yup.string().required('you must pick a size'),
 
+   pepperoni: yup.boolean(),
+
+   ham: yup.boolean(),
+
+   mushrooms: yup.boolean(),
+
+   pineapple: yup.boolean(),
+
+   spinach: yup.boolean(),
+
+   olives: yup.boolean(),
+
+   garlic: yup.boolean(),
+
+   onion: yup.boolean(),
+
+   bellPepper: yup.boolean(),
+
+   tomato: yup.boolean(),
+
    special: yup.string().max(300, 'you exceeded 300 characters')
 })
 

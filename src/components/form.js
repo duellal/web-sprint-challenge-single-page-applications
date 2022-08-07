@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import OrderButton from './order'
 
 export default function OrderForm(props) {
-   const { values, change, errors } = props
+   const { values, change, errors, submit } = props
 
    const onChange = event => {
       const { name, value, checked, type } = event.target
@@ -15,10 +15,11 @@ export default function OrderForm(props) {
    }
 
    return (
-      <form id="pizza-form">
+      <form id="pizza-form" onSubmit={submit}>
          <h2>Build Your Own Pizza</h2>
          <div className="name">
             <h3>First and Last Name:</h3>
+            <div className="error">{errors.name}</div>
             <input
                type="text"
                id="name-input"
@@ -29,11 +30,10 @@ export default function OrderForm(props) {
          </div>
          <div className="pickSize">
             <h3>Choice of Size</h3>
-            <p>Required</p>
+            <div className="errors">{errors.size}</div>
             <select
-               name="pickSize"
-               id="size-dropdown"
                name="size"
+               id="size-dropdown"
                value={values.size}
                onChange={onChange}
             >
@@ -139,14 +139,17 @@ export default function OrderForm(props) {
 
          <div className="specialInstructions">
             <h3>Special Instructions:</h3>
+            <div className="errors">{errors.special}</div>
             <input
                type='text'
                id='special-text'
                name='special'
+               onChange={onChange}
+               value={values.special}
             />
          </div>
          <div id="order-button">
-            <OrderButton />
+            <button>Order</button>
          </div>
       </form>
    )

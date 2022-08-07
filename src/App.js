@@ -50,6 +50,41 @@ const App = () => {
     setFormValues({ ...formValues, [name]: value })
   }
 
+  const postNewOrder = (newOrder) => {
+    axios
+      .post('https://reqres.in/api/orders', newOrder)
+      .then(res => {
+        console.log(res.data)
+        setOrders([res.data, ...orders])
+      })
+      .finally(setFormValues(initialFormValues))
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  const submitOrder = event => {
+    event.preventDefault()
+
+    const newOrder = {
+      name: formValues.name.trim(),
+      size: formValues.size,
+      pepperoni: formValues.pepperoni,
+      ham: formValues.ham,
+      mushrooms: formValues.mushrooms,
+      pineapple: formValues.pineapple,
+      spinach: formValues.spinach,
+      olives: formValues.olives,
+      garlic: formValues.garlic,
+      onion: formValues.onion,
+      bellPepper: formValues.bellPepper,
+      tomato: formValues.tomato,
+      special: formValues.special.trim()
+    }
+
+    postNewOrder(newOrder)
+  }
+
   return (
     <>
       <div className="">
@@ -71,7 +106,7 @@ const App = () => {
 
         {/* <Switch> */}
         <Route path={`/pizza`}>
-          <OrderForm values={formValues} change={changeInput} errors={errors} />
+          <OrderForm values={formValues} change={changeInput} errors={errors} submit={submitOrder} />
         </Route>
         {/* </Switch> */}
       </div>
