@@ -29,12 +29,20 @@ const initialFormErrors = {
 }
 
 const initialOrders = []
+const initialDisabled = true
 
 
 const App = () => {
   const [formValues, setFormValues] = useState(initialFormValues)
   const [orders, setOrders] = useState(initialOrders)
   const [errors, setErrors] = useState(initialFormErrors)
+  const [disabled, setDisabled] = useState(initialDisabled)
+
+  useEffect(() => {
+    formSchema.isValid(formValues).then(validate => {
+      setDisabled(!validate)
+    })
+  }, [formValues])
 
   const changeInput = (name, value) => {
     yup
@@ -106,7 +114,12 @@ const App = () => {
 
         {/* <Switch> */}
         <Route path={`/pizza`}>
-          <OrderForm values={formValues} change={changeInput} errors={errors} submit={submitOrder} />
+          <OrderForm
+            values={formValues}
+            change={changeInput}
+            errors={errors}
+            submit={submitOrder}
+            disabled={disabled} />
         </Route>
         {/* </Switch> */}
       </div>

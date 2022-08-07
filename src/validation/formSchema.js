@@ -3,9 +3,9 @@ import * as yup from 'yup';
 const formSchema = yup.object().shape({
    name: yup.string()
       .min(2, 'name must be at least 2 characters')
-      .required('name is required'),
+      .required(),
 
-   size: yup.string().required('you must pick a size'),
+   size: yup.string().required(),
 
    pepperoni: yup.boolean(),
 
