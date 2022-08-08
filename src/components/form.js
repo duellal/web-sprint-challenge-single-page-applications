@@ -30,11 +30,13 @@ export default function OrderForm(props) {
          </div>
          <div className="glutenFree">
             <h3>Gluten Free Crust?</h3>
-            <Toggle
-               isOn={isOn}
-               handleToggle={handleToggle}
-               onColor={onColor}
-            />
+            <label>
+               <Toggle
+                  isOn={isOn}
+                  handleToggle={handleToggle}
+                  onColor={onColor}
+               />
+            </label>
          </div>
          <div className="pickSize">
             <h3>Choice of Size</h3>

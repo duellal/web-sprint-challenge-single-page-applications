@@ -46,6 +46,8 @@ const App = () => {
     })
   }, [formValues])
 
+  const toggle = () => { setIsOn(!isOn) }
+
   const changeInput = (name, value) => {
     yup
       .reach(formSchema, name)
@@ -122,7 +124,7 @@ const App = () => {
             submit={submitOrder}
             disabled={disabled}
             isOn={isOn}
-            handleToggle={() => setIsOn(!isOn)}
+            handleToggle={toggle}
             onColor={'#27AE60'}
           />
         </Route>

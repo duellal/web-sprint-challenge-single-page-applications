@@ -13,11 +13,10 @@
    background: grey;
    border-radius: 100px;
    position: relative;
-   transition: background-color .5s;
+   transition: .5s;
 }
 
 .toggle-label .toggle-btn {
-   /* content: ''; */
    position: absolute;
    width: 25px;
    height: 25px;
