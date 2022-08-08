@@ -1,0 +1,37 @@
+.toggle-checkbox {
+   height: 0;
+   width: 0;
+   visibility: hidden;
+}
+
+.toggle-label {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 50px;
+   height: 25px;
+   background: grey;
+   border-radius: 100px;
+   position: relative;
+   transition: background-color .5s;
+}
+
+.toggle-label .toggle-btn {
+   /* content: ''; */
+   position: absolute;
+   width: 25px;
+   height: 25px;
+   border-radius: 50px;
+   transition: .5s;
+   background: lightgrey;
+   box-shadow: 0 0 2px 0 rgba(10, 10, 0.29);
+}
+
+.toggle-checkbox:checked .toggle-label .toggle-btn {
+   left: calc(100% - 2px);
+   transform: translateX(-100%);
+}
+
+.toggle-label:active .toggle-btn {
+   width: 20px;
+}

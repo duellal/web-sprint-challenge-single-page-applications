@@ -9,6 +9,7 @@ import formSchema from './validation/formSchema'
 const initialFormValues = {
   name: '',
   size: '',
+  gfToggle: false,
   pepperoni: false,
   ham: false,
   mushrooms: false,
@@ -37,6 +38,7 @@ const App = () => {
   const [orders, setOrders] = useState(initialOrders)
   const [errors, setErrors] = useState(initialFormErrors)
   const [disabled, setDisabled] = useState(initialDisabled)
+  const [isOn, setIsOn] = useState(false)
 
   useEffect(() => {
     formSchema.isValid(formValues).then(validate => {
@@ -112,16 +114,18 @@ const App = () => {
           </Link>
         </div>
 
-        {/* <Switch> */}
         <Route path={`/pizza`}>
           <OrderForm
             values={formValues}
             change={changeInput}
             errors={errors}
             submit={submitOrder}
-            disabled={disabled} />
+            disabled={disabled}
+            isOn={isOn}
+            handleToggle={() => setIsOn(!isOn)}
+            onColor={'#27AE60'}
+          />
         </Route>
-        {/* </Switch> */}
       </div>
     </>
   );

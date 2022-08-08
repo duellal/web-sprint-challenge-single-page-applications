@@ -1,10 +1,9 @@
-import { toHaveFormValues } from "@testing-library/jest-dom/dist/matchers";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import OrderButton from './order'
+import Toggle from './toggle'
 
 export default function OrderForm(props) {
-   const { values, change, errors, submit, disabled } = props
+   const { values, change, errors, submit, disabled, isOn, handleToggle, onColor } = props
 
    const onChange = event => {
       const { name, value, checked, type } = event.target
@@ -27,6 +26,14 @@ export default function OrderForm(props) {
                name="name"
                value={values.name}
                onChange={onChange}
+            />
+         </div>
+         <div className="glutenFree">
+            <h3>Gluten Free Crust?</h3>
+            <Toggle
+               isOn={isOn}
+               handleToggle={handleToggle}
+               onColor={onColor}
             />
          </div>
          <div className="pickSize">
