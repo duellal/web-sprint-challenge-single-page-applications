@@ -99,7 +99,7 @@ const App = () => {
 
   return (
     <>
-      <div className="">
+      <div className="body">
         <header>
           <h1>Lambda Eats</h1>
           <nav>

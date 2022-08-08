@@ -39,7 +39,7 @@ export default function OrderForm(props) {
             </label>
          </div>
          <div className="pickSize">
-            <h3>Choice of Size</h3>
+            <h3>Pick a Size</h3>
             <div className="errors">{errors.size}</div>
             <select
                name="size"

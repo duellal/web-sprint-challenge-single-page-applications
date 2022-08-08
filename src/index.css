@@ -7,6 +7,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.body {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+div,
+nav,
+button,
+h3,
+form,
+p {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.orderBtn {
+  width: 10%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

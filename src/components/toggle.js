@@ -16,7 +16,9 @@ export default function Toggle(props) {
          />
          <label
             className="toggle-label"
-            style={{ background: isOn && onColor }}>
+            style={{ background: isOn && onColor }}
+            htmlFor={'gfToggle'}
+         >
             <span className={'toggle-btn'} />
          </label>
       </>
